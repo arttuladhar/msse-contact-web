@@ -27,9 +27,10 @@
 		</div>
 	</div>
 
-	<!-- Details Page -->
+	<!-- Contact Details Page -->
 	<div data-role="page" id="details-page" data-theme="b">
 		<div data-role="header">
+			<a href="#" data-rel="back">Back</a>
 			<h1>Contacts Details</h1>
 		</div>
 		<div data-role="context">
@@ -71,10 +72,14 @@
 		</div>
 	</div>
 
+
+	<!-- Edit Contact Page -->
 	<div data-role="page" id="edit-page" data-theme="b">
-		<div data-role="header"><h1>Edit Contact</h1></div>
-		<div data-role="context">
-			<form>
+		<div data-role="header">
+			<a href="#" data-rel="back">Back</a>
+			<h1>Edit Contact</h1>
+		</div>
+		<div id="edit-contact" data-role="context">
 				<label for="name">Name</label>
 				<input type="text" id="name" name="name" placeholder="Name">
 				<label for="title">Title</label>
@@ -85,8 +90,7 @@
 				<input type="tel" id="phone" name="phone" placeholder="Phone">
 				<label for="twitterid">Twitter ID</label>
 				<input type="text" id="twitterid" name="twitterid" placeholder="Twitter ID">
-				<input type="submit" value="Update">
-			</form>
+				<a href="#contact-page" data-role="button"><input id="updatecontact" type="button" value="Update"></a>
 		</div>
 	</div>
 

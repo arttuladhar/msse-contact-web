@@ -1,4 +1,4 @@
-var apiKey = "admin"
+var apiKey = "beak"
 var _contacts = {};
 var _contactID = null;
 
@@ -33,14 +33,6 @@ $(document).on('click', '#contactlist a', function() {
 	return true
 });
 
-//OnClick Listener for Edit
-$(document).on('click', '#', function() {
-
-
-}
-
-
-
 
 //Details Page Load
 $(document).on('pagebeforeshow', '#details-page', function() {
@@ -55,5 +47,56 @@ $(document).on('pagebeforeshow', '#details-page', function() {
 	$('#email').text(contact.email)
 	$('#phone').text(contact.phone)
 	$('#twitterid').text(contact.twitterId)
+
+});
+
+//Edit Page Load
+$(document).on('pagebeforeshow', '#edit-page', function() {
+	var contact = _contacts[_contactID]
+	console.log(contact)
+
+	$("input[name=name]").val(contact.name);
+	$("input[name=title]").val(contact.title);
+	$("input[name=email]").val(contact.email);
+	$("input[name=phone]").val(contact.phone);
+	$("input[name=twitterid]").val(contact.twitterId);
+	
+});
+
+//Click Event Handler for Update Page
+$(document).on('click', "#updatecontact", function() {
+	var contact = _contacts[_contactID]
+	contactData = function(item) {
+    return {
+     	name: 		item.find('input[name=name]').val(),
+     	title: 		item.find('input[name=title]').val(),
+     	email: 		item.find('input[name=email]').val(),
+     	phone: 		item.find('input[name=phone]').val(),
+     	twitterId: 	item.find('input[name=twitterid]').val()
+    };
+  	};
+
+	var url = "http://contacts.tinyapollo.com/contacts/" + contact._id + "?key=beak"
+	item = $(this).parents("#edit-contact");
+	data = contactData(item)
+
+	console.log(url)
+	console.log(data)
+
+	//Sending Via Ajax
+	$.ajax({
+		url: url,
+		type: 'PUT',
+		dataType: 'json',
+		data: data,
+		success: function(data) {
+			if (data.status == 'success') {
+				console.log ("Updated")
+				location.reload();
+			} else {
+				alert (data.message);
+			}
+		}
+	});
 
 });
