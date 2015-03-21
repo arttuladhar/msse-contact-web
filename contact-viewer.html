@@ -53,10 +53,10 @@
 	<!-- Add Contacts -->
 	<div data-role="page" id="add-page" data-theme="b">
 		<div data-role="header">
+			<a href="#" data-rel="back">Back</a>
 			<h1>Add Contacts</h1>
 		</div>
-		<div data-role="context">
-			<form>
+		<div id="add-contact" data-role="context">
 				<label for="name">Name</label>
 				<input type="text" id="name" name="name" placeholder="Name">
 				<label for="title">Title</label>
@@ -67,8 +67,7 @@
 				<input type="tel" id="phone" name="phone" placeholder="Phone">
 				<label for="twitterid">Twitter ID</label>
 				<input type="text" id="twitterid" name="twitterid" placeholder="Twitter ID">
-				<input type="submit" value="Add">
-			</form>
+				<a href="#contact-page" data-role="button"><input id="addcontact" type="button" value="Add"></a>
 		</div>
 	</div>
 

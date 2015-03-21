@@ -76,12 +76,12 @@ $(document).on('click', "#updatecontact", function() {
     };
   	};
 
-	var url = "http://contacts.tinyapollo.com/contacts/" + contact._id + "?key=beak"
+	var url = "http://contacts.tinyapollo.com/contacts/" + contact._id + "?key=" + apiKey
 	item = $(this).parents("#edit-contact");
-	data = contactData(item)
+	data = contactData(item);
 
-	console.log(url)
-	console.log(data)
+	console.log(url);
+	console.log(data);
 
 	//Sending Via Ajax
 	$.ajax({
@@ -92,6 +92,42 @@ $(document).on('click', "#updatecontact", function() {
 		success: function(data) {
 			if (data.status == 'success') {
 				console.log ("Updated")
+				location.reload();
+			} else {
+				alert (data.message);
+			}
+		}
+	});
+
+});
+
+$(document).on('click', '#addcontact', function() {
+	contactData = function(item) {
+    return {
+     	name: 		item.find('input[name=name]').val(),
+     	title: 		item.find('input[name=title]').val(),
+     	email: 		item.find('input[name=email]').val(),
+     	phone: 		item.find('input[name=phone]').val(),
+     	twitterId: 	item.find('input[name=twitterid]').val()
+    };
+  	};
+
+  	var url = "http://contacts.tinyapollo.com/contacts?key=" + apiKey
+  	item = $(this).parents("#add-contact");
+  	data = contactData(item);
+
+  	console.log(url);
+  	console.log(data);
+
+  	//Sending Via Ajax
+	$.ajax({
+		url: url,
+		type: 'POST',
+		dataType: 'json',
+		data: data,
+		success: function(data) {
+			if (data.status == 'success') {
+				console.log ("Contact Created")
 				location.reload();
 			} else {
 				alert (data.message);
