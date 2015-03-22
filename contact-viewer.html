@@ -15,6 +15,7 @@
 </head>
 
 <body>
+	<!-- Main Page for Contacts App -->
 	<div data-role='page' id="contact-page" data-theme="b">
 		<div data-role='header'>
 			<h1>Contacts</h1>		
@@ -43,9 +44,18 @@
 				<tr><th align="left">Phone</th><td></td><td id="phone">#Phone</td></tr>
 				<tr><th align="left">Twitter ID</th><td></td><td id="twitterid">#TwitterID</td></tr>
 			</table>
-			<div data-role="controlgroup" data-type="horizontal" align="center">				
+			<div data-role="controlgroup" data-type="horizontal" align="center">
 				<a href="#edit-page" data-role="button">Edit</a>
-				<a href="#details-page" data-role="button">Delete</a>				
+				<a href="#deleteconfim" data-rel="popup" data-role="button">Delete</a>	
+				
+				<div data-role="popup" id="deleteconfim">
+				<div data-role="header"><h1>Confirm Delete</h1></div>
+					<div data-role="main" class="ui-context">
+						<p>Are you sure you want to Delete the Contact ?</p>
+						<a href="#contact-page" id="deletecontact" class="ui-btn">Yes</a>
+						<a href="#details" class="ui-btn" data-rel="back">No</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

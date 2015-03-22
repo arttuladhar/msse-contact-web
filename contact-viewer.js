@@ -136,3 +136,27 @@ $(document).on('click', '#addcontact', function() {
 	});
 
 });
+
+$(document).on('click', '#deletecontact', function() {
+	var data
+	var contact = _contacts[_contactID];
+	var url = "http://contacts.tinyapollo.com/contacts/" + contact._id + "?key=" + apiKey;
+	console.log (url);
+
+	//Sending Via Ajax
+	$.ajax({
+		url: url,
+		type: 'DELETE',
+		dataType: 'json',
+		data: data,
+		success: function(data) {
+			if (data.status == 'success') {
+				console.log ("Contact")
+				location.reload();
+			} else {
+				alert (data.message);
+			}
+		}
+	});
+
+});
