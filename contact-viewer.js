@@ -53,7 +53,6 @@ $(document).on('pagebeforeshow', '#details-page', function() {
 $(document).on('pagebeforeshow', '#edit-page', function() {
 	var contact = _contacts[_contactID]
 	console.log(contact)
-
 	$("#edit-contact input[name=name]").val(contact.name);
 	$("#edit-contact input[name=title]").val(contact.title);
 	$("#edit-contact input[name=email]").val(contact.email);
@@ -91,10 +90,7 @@ $(document).on('click', "#updatecontact", function() {
 		success: function(data) {
 			if (data.status == 'success') {
 				console.log ("Updated")
-				//location.reload();
-				contactList.listview('refresh');
-				contactList.listview('refresh');
-
+				location.reload();
 			} else {
 				alert (data.message);
 			}
