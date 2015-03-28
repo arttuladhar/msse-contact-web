@@ -20,7 +20,7 @@ $(document).on('pagebeforeshow', '#contact-page', function() {
 				contact.name + 
 				'</a></li>');				
 		}
-	contactList.listview('refresh')	
+	contactList.listview('refresh')
 	});
 
 });
@@ -29,7 +29,7 @@ $(document).on('pagebeforeshow', '#contact-page', function() {
 $(document).on('click', '#contactlist a', function() {
 	var link = $(this)
 	_contactID = link.data('contact-id')
-	alert ("Clicked : " + _contactID);
+	// alert ("Clicked : " + _contactID);
 	return true
 });
 
