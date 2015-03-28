@@ -27,9 +27,8 @@ $(document).on('pagebeforeshow', '#contact-page', function() {
 
 //OnClick Listener for ContactList
 $(document).on('click', '#contactlist a', function() {
-	var link = $(this)
-	_contactID = link.data('contact-id')
-	// alert ("Clicked : " + _contactID);
+	var link = $(this);
+	_contactID = link.data('contact-id');
 	return true
 });
 
@@ -42,11 +41,11 @@ $(document).on('pagebeforeshow', '#details-page', function() {
 	//$('.contact-details').text(contact.name + ' details')
 
 	//Filling Table
-	$('#name').text(contact.name)
-	$('#title').text(contact.title)
-	$('#email').text(contact.email)
-	$('#phone').text(contact.phone)
-	$('#twitterid').text(contact.twitterId)
+	$('#name').text(contact.name);
+	$('#title').text(contact.title);
+	$('#email').text(contact.email);
+	$('#phone').text(contact.phone);
+	$('#twitterid').text(contact.twitterId);
 
 });
 
@@ -55,17 +54,17 @@ $(document).on('pagebeforeshow', '#edit-page', function() {
 	var contact = _contacts[_contactID]
 	console.log(contact)
 
-	$("input[name=name]").val(contact.name);
-	$("input[name=title]").val(contact.title);
-	$("input[name=email]").val(contact.email);
-	$("input[name=phone]").val(contact.phone);
-	$("input[name=twitterid]").val(contact.twitterId);
+	$("#edit-contact input[name=name]").val(contact.name);
+	$("#edit-contact input[name=title]").val(contact.title);
+	$("#edit-contact input[name=email]").val(contact.email);
+	$("#edit-contact input[name=phone]").val(contact.phone);
+	$("#edit-contact input[name=twitterid]").val(contact.twitterId);
 	
 });
 
 //Click Event Handler for Update Page
 $(document).on('click', "#updatecontact", function() {
-	var contact = _contacts[_contactID]
+	var contact = _contacts[_contactID];
 	contactData = function(item) {
     return {
      	name: 		item.find('input[name=name]').val(),
@@ -92,7 +91,10 @@ $(document).on('click', "#updatecontact", function() {
 		success: function(data) {
 			if (data.status == 'success') {
 				console.log ("Updated")
-				location.reload();
+				//location.reload();
+				contactList.listview('refresh');
+				contactList.listview('refresh');
+
 			} else {
 				alert (data.message);
 			}
@@ -100,6 +102,9 @@ $(document).on('click', "#updatecontact", function() {
 	});
 
 });
+
+
+
 
 $(document).on('click', '#addcontact', function() {
 	contactData = function(item) {
@@ -128,7 +133,8 @@ $(document).on('click', '#addcontact', function() {
 		success: function(data) {
 			if (data.status == 'success') {
 				console.log ("Contact Created")
-				location.reload();
+				$('input').val('');
+				contactList.listview('refresh');
 			} else {
 				alert (data.message);
 			}
